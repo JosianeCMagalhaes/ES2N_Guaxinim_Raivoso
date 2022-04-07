@@ -1,0 +1,57 @@
+Primeiros passos para clonar o repositório localmente (baixar o repositório):
+1º  - escolha uma pasta que queira clonar o repositório, exemplo documentos/faculdade/ES2
+2ºA - Abra o git bash na pasta selecionada, botão direito do mouse, selecione a opção git bash here
+2ºB - Caso não tenha a opção no 2 A, abra o git bash pelo pesquisa de programas do Windows, utilize o comando CD para ir até a pasta desejada.
+3º  - Utilize o comando "git clone https://github.com/isaquechaves/ES2N_Guaxinim_Raivoso.git" (sem as aspas) para clonar o repositório
+
+Primeiro commit
+1º  - Altere o arquivo desejado, ou crie um novo arquivo no repositório
+2º  - Verifique se o git detectou as mudanças no repositório com o comando git status
+3ºA - Caso apenas a sua mudança tenha sido detectada você pode utilizar o comando "git add ." (sem as aspas)
+3ºB - Caso contrário utilize "git add Nome_Do_Arquivo_Que_Voce_Deseja_Enviar.txt" (sem as aspas, adicione o nome do seu arquivo igual como apareceu no git status)
+4º  - Crie seu commit com o comando "git commit -m "mensagem do commit que deve estar entre aspas" " (sem as aspas do início e fim)
+5º  - SEMPRE dê o comando "git pull" (sem aspas) após criar o commit
+6º  - Utilize o comando "git push -u origin main" (sem aspas) para enviar o seu commit para a Branch
+
+Git global setup (Config de usuário)
+git config --global user.name "username" //Nome que será exiibido no commit
+git config --global user.email "email" //email vinculado a sua conta do Github
+
+//Tirar arquivos adicionados sem querer da área de stage do GIT
+1º Através do "git status" verificar o nome exato do arquivo que deseja retirar
+2ºA - Utilizar o comando "git restore --staged arquivo.txt" substítua apenas o arquivo.txt pelo nome do 1º passo
+2ºB - Caso queira retirar tudo da área de stage utilizar "git restore --staged ."
+
+//Reverter um commit na REMOTE (remote = nuvem, commits que foram feito push para branch)
+1º Descubra o hash do commit, utilize o comando "git log" para listar os últimos commits,
+	escreva "more" para ir exibindo mais commits se necessário, 
+	caso queira sair da lista digita "qa"
+2º Utilize o commando "git revert hashEncontradoNoPasso1"
+
+//Git Clone
+cd C:\Users\documents\  (ir para a pasta que você deseja)
+git clone https.. (https do repositório)
+
+//Git Commit 
+git add README.md
+git add .    //adiciona todos os arquivos alterados
+
+//Fazer o commit após adicionar os arquivos desejados
+git commit -m "add README"
+git pull
+git push -u origin master //master deve ser substituído pelo nome da branch se diferente, ex.: main
+
+//Push an existing folder as a new git repo or to a existent git repo
+cd existing_folder
+git init
+git remote add origin https:...
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Push an existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin https://git.com/
+git push -u origin --all
+git push -u origin --tags
