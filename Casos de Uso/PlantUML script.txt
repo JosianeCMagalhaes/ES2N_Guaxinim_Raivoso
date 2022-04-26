@@ -1,0 +1,61 @@
+@startuml
+
+actor usuario <<aluno>>
+
+package adm{
+actor Administrador
+actor ModeradorDeDisciplina
+
+Administrador -|> ModeradorDeDisciplina
+ModeradorDeDisciplina -|> usuario
+}
+rectangle LoginCadastro{
+(Fazer Login) 
+(Cadastrar conta)
+(Cadastrar conta) .> (Fazer Login) : extends
+(Fazer Login) .> (Fazer Logout) : extends
+
+usuario -left- (Fazer Login)
+usuario -left- (Cadastrar conta)
+
+}
+
+rectangle Posts{
+
+(Fazer Login) --> (Responder posts) : extends
+(Fazer Login) --> (Comentar posts e respostas) : extends
+(Fazer Login) --> (Visualizar perfil) : extends
+(Fazer Login) --> (Avaliar respostas) : extends
+
+(Comentar posts e respostas) .> (Anexar Documentos) : extends
+(Responder posts) .> (Anexar Documentos) : extends
+
+}
+
+rectangle Ações{
+(Fazer Login) -up-> (Mandar mensagem direta) : extends
+(Fazer Login) -up->(Recuperar senha) : extends
+(Fazer Login) -up->(Criar tag) : extends
+(Fazer Login) -up->(Pesquisar usuário) : extends
+}
+
+rectangle SemLogin{
+(usuario) --> (Filtrar posts) : extends
+(usuario) -->(Visualização sem login) : extends
+(usuario) -->(Realizar denúncias) : extends
+(usuario) -->(Listar Tag) : extends
+(usuario) -->(Pesquisar tag) : extends
+}
+
+rectangle Gerenciar{
+(Administrador)-up-> (Gerenciar posts) : extends
+(Fazer Login) .> (Gerenciar posts) : extends
+
+(Administrador)-up-> (Gerenciar usuário) : extends
+
+(Administrador)-up-> (Gerenciar denúncias) : extends
+
+}
+
+
+@enduml
